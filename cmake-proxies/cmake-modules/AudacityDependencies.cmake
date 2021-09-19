@@ -234,13 +234,16 @@ function ( _conan_install build_type )
 
     if( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
         # TODO: Read the target CPU architecture from the CMake option
-        # We have no AppleSilicon support yet
-        list( APPEND settings "arch=x86_64" )
+        # We have no universal support yet
+        # https://github.com/conan-io/conan/issues/1047
+        list( APPEND settings "arch=armv8" )
         list( APPEND settings "os.version=${CMAKE_OSX_DEPLOYMENT_TARGET}" )
         # This line is required to workaround the conan bug #8025
         # https://github.com/conan-io/conan/issues/8025
         # Without it, libjpeg-turbo will fail to cross-compile on AppleSilicon macs
-        list( APPEND settings ENV "CONAN_CMAKE_SYSTEM_PROCESSOR=x86_64")
+        if ( NOT "${CMAKE_HOST_SYSTEM_PROCESSOR}" STREQUAL "${CMAKE_SYSTEM_PROCESSOR}" )
+            list( APPEND settings ENV "CONAN_CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
+        endif()
     endif()
 
     if (build_type MATCHES "MinSizeRel|RelWithDebInfo")

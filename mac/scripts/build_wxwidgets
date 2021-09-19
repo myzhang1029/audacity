@@ -53,7 +53,7 @@ function bld
 
 # Only build 32-bit version if running on 10.14 or older and
 # using the 10.13 SDK or older.
-arches="x86_64"
+arches="arm64 x86_64"
 osver="$(sw_vers -productVersion)"
 sdkver="$(xcrun --show-sdk-version)"
 if [ "${osver}" \< "10.15" -a "${sdkver}" \< "10.14" ]

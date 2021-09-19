@@ -4,7 +4,7 @@
 
 #include "config.h"
 
-#if defined(ENABLE_SSE) && !defined(APPLE_PPC)
+#if defined(ENABLE_SSE) && !defined(APPLE_PPC) && !defined(__arm__) && !defined(__arm64__)
 
 #include <xmmintrin.h>
 
