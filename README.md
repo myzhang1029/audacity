@@ -1,3 +1,5 @@
+**This fork is deprecated as official Apple Silicon support is implemented in [upstream #2416](https://github.com/audacity/audacity/pull/2416).**
+
 [![Audacity](https://forum.audacityteam.org/styles/prosilver/theme/images/Audacity-logo_75px_trans_forum.png)](https://www.audacityteam.org) 
 =========================
 
